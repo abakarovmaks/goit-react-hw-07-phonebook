@@ -1,3 +1,7 @@
 {
-  "contacts": []
+  "contacts": [{
+    "id": 1,
+    "name": "Max",
+    "number": "093-33-55-367"
+  }]
 }

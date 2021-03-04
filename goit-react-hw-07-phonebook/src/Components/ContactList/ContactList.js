@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ContactList.module.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
+import contactsOperations from '../../redux/phoneBook/phoneBook-operations';
+import { changeFilter } from '../../redux/phoneBook/phoneBook-actions';
 import '../Fade/Fade.css';
 
 const ContactList = ({ contacts, onDelete, clearFilter }) => {
@@ -53,8 +54,8 @@ const mapStateToProps = ({ phoneBook: { contacts, filter } }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onDelete: (id) => dispatch(phoneBookActions.deleteContact(id)),
-  clearFilter: () => dispatch(phoneBookActions.changeFilter('')),
+  onDelete: (id) => dispatch(contactsOperations.deleteContact(id)),
+  clearFilter: () => dispatch(changeFilter('')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

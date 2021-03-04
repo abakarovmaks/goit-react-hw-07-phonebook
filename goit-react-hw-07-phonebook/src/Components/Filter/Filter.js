@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
+import { changeFilter } from '../../redux/phoneBook/phoneBook-actions';
 import './Filter.css';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
@@ -40,8 +40,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatsh) => ({
-  onChangeFilter: (e) =>
-    dispatsh(phoneBookActions.changeFilter(e.target.value)),
+  onChangeFilter: (e) => dispatsh(changeFilter(e.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
