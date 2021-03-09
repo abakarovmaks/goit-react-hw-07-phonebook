@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import { phoneBookReducer } from './phoneBook';
 import {
   FLUSH,
   REHYDRATE,
@@ -8,8 +9,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
-import phoneBookReducer from './phoneBook/phoneBook-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({

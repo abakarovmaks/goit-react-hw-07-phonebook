@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ContactList.module.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import contactsOperations from '../../redux/phoneBook/phoneBook-operations';
 import { changeFilter } from '../../redux/phoneBook/phoneBook-actions';
 import '../Fade/Fade.css';
+import { phoneBookOperations, phoneBookSelectors } from '../../redux/phoneBook';
 
 const ContactList = ({ contacts, onDelete, clearFilter }) => {
   return (
@@ -41,20 +41,20 @@ ContactList.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.object),
 };
 
-const getFilteredContactsList = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
+// const getFilteredContactsList = (allContacts, filter) => {
+//   const normalizedFilter = filter.toLowerCase();
 
-  return allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
-  );
-};
+//   return allContacts.filter(({ name }) =>
+//     name.toLowerCase().includes(normalizedFilter)
+//   );
+// };
 
-const mapStateToProps = ({ phoneBook: { contacts, filter } }) => ({
-  contacts: getFilteredContactsList(contacts, filter),
+const mapStateToProps = (state) => ({
+  contacts: phoneBookSelectors.getFilteredContactsList(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onDelete: (id) => dispatch(contactsOperations.deleteContact(id)),
+  onDelete: (id) => dispatch(phoneBookOperations.deleteContact(id)),
   clearFilter: () => dispatch(changeFilter('')),
 });
 

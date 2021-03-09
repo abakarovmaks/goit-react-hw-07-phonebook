@@ -13,7 +13,7 @@ import {
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
-const fetchContact = () => async (dispatch) => {
+const fetchContacts = () => async (dispatch) => {
   dispatch(fetchContactRequest());
 
   try {
@@ -51,7 +51,7 @@ const deleteContact = (contactId) => (dispatch) => {
 const operations = {
   addContact,
   deleteContact,
-  fetchContact,
+  fetchContacts,
 };
 
 export default operations;

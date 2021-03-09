@@ -4,6 +4,7 @@ import { changeFilter } from '../../redux/phoneBook/phoneBook-actions';
 import './Filter.css';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import { phoneBookSelectors } from '../../redux/phoneBook';
 
 const Filter = ({ value, onChangeFilter, contacts }) => {
   return (
@@ -35,8 +36,8 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  value: state.phoneBook.filter,
-  contacts: state.phoneBook.contacts,
+  value: phoneBookSelectors.getFilter(state),
+  contacts: phoneBookSelectors.getAllContacts(state),
 });
 
 const mapDispatchToProps = (dispatsh) => ({
