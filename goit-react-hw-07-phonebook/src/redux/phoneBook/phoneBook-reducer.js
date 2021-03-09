@@ -28,10 +28,6 @@ const contacts = createReducer(initialState.contacts, {
     state.filter(({ id }) => id !== payload),
 });
 
-const filter = createReducer('', {
-  [changeFilter]: (_, { payload }) => payload,
-});
-
 const loading = createReducer(initialState.loading, {
   [fetchContactRequest]: () => true,
   [fetchContactSuccess]: () => false,
@@ -42,6 +38,10 @@ const loading = createReducer(initialState.loading, {
   [deleteContactRequest]: () => true,
   [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
+});
+
+const filter = createReducer('', {
+  [changeFilter]: (_, { payload }) => payload,
 });
 
 const error = createReducer(initialState.error, {

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import Notification from '../Notification/Notification';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
-import { phoneBookOperations } from '../../redux/phoneBook';
-import { phoneBookSelectors } from '../../redux/phoneBook';
+import operations from '../../redux/phoneBook/phoneBook-operations';
+import selectors from '../../redux/phoneBook/phoneBook-selectors';
 
 class ContactForm extends Component {
   state = {
@@ -97,12 +97,11 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: phoneBookSelectors.getAllContacts(state),
+  contacts: selectors.getAllContacts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (name, number) =>
-    dispatch(phoneBookOperations.addContact(name, number)),
+  onSubmit: (name, number) => dispatch(operations.addContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
